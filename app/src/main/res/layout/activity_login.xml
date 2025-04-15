@@ -8,30 +8,32 @@
 
     <EditText
         android:id="@+id/etUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username"
-        android:inputType="text" />
+        android:layout_width="380dp"
+        android:layout_height="48dp"
+        android:hint="@string/UserName"
+        android:inputType="text"
+        android:autofillHints="emailAddress"/>
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:hint="Password"
-        android:inputType="textPassword" />
+        android:hint="@string/Pass"
+        android:inputType="textPassword"
+        android:autofillHints="password"/>
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Login" />
+        android:text="@string/Login" />
 
     <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
+        android:id="@+id/crtAcc"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Create Account" />
+        android:text="@string/CreateAccount" />
 </LinearLayout>
