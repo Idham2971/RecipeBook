@@ -3,4 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#6F826A</color>
+    <color name="lavaGrey">#393E46</color>
+    <color name="BrokenWhite">#CCCCCC</color>
+    <color name="DarkBlue">#0F4C75</color>
+    <color name="Pastel">#FFDDAB</color>
+
+
+
 </resources>

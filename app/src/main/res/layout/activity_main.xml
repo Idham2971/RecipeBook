@@ -1,24 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:backgroundTint="@color/green"
+    android:background="@drawable/edittext_border">
 
-    .
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/logo"
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:hint="@string/Search"
+            android:background="@drawable/edittext_border"
+            android:padding="8dp"
+            android:textColorHint="@color/black"
+            android:backgroundTint="@color/white"
+            android:autofillHints=""
+            android:inputType="text"/>
+
+        <ImageButton
+            android:id="@+id/micButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/mic"
+            android:background="@drawable/border_bulat"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/Mic"
+            android:backgroundTint="@color/white"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:text="@string/Popular"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popularRecipeList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"
-        tools:layout_editor_absoluteX="-40dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:backgroundTint="@color/Pastel"
+        android:background="@drawable/edittext_border"/>
+</LinearLayout>
