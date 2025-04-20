@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/edittext_border"
     android:backgroundTint="@color/green">
 
+    <!-- Judul Hasil Pencarian -->
     <TextView
         android:id="@+id/searchTitle"
         android:text="@string/HasilPencarian"
@@ -16,12 +16,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:paddingBottom="8dp"/>
+        android:padding="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
 
+    <!-- RecyclerView hasil pencarian -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchResultList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/searchTitle"
+        android:layout_above="@id/bottom_navigation"
+        android:backgroundTint="@color/Pastel"
         android:background="@drawable/edittext_border"
-        android:backgroundTint="@color/Pastel" />
-</LinearLayout>
+        android:padding="8dp" />
+
+    <!-- Bottom Navigation View -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/bottom_nav_menu" />
+</RelativeLayout>

@@ -1,90 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
+    <!-- Konten Scroll -->
+    <ScrollView
+        android:id="@+id/addRecipeScroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
         android:background="@color/green">
 
-        <EditText
-            android:id="@+id/recipeNameInput"
-            android:hint="@string/RecipeName"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:autofillHints="name"
-            android:textColor="@color/white"
-            android:background="@drawable/edittext_border"
-            android:padding="8dp"
-            android:textColorHint="@color/black"
-            android:layout_margin="5dp"
-            android:inputType="text"
-            android:backgroundTint="@color/white"
-            />
-
-        <EditText
-            android:id="@+id/ingredientsInput"
-            android:hint="@string/Bahan"
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minLines="4"
-            android:gravity="top"
-            android:inputType="textMultiLine"
-            android:background="@drawable/edittext_border"
-            android:padding="8dp"
-            android:layout_margin="5dp"
-            android:autofillHints=""
-            android:textColorHint="@color/black"
-            android:backgroundTint="@color/white"/>
+            android:background="@color/green">
 
-        <EditText
-            android:id="@+id/stepsInput"
-            android:hint="@string/Langkah"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minLines="4"
-            android:gravity="top"
-            android:inputType="textMultiLine"
-            android:background="@drawable/edittext_border"
-            android:padding="8dp"
-            android:layout_margin="5dp"
-            android:autofillHints=""
-            android:textColorHint="@color/black"
-            android:backgroundTint="@color/white"/>
+            <EditText
+                android:id="@+id/recipeNameInput"
+                android:hint="@string/RecipeName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:autofillHints="name"
+                android:textColor="@color/white"
+                android:background="@drawable/edittext_border"
+                android:padding="8dp"
+                android:textColorHint="@color/black"
+                android:layout_margin="5dp"
+                android:inputType="text"
+                android:backgroundTint="@color/white"/>
 
-        <ImageView
-            android:id="@+id/recipeImagePreview"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="centerCrop"
-            android:background="@drawable/edittext_border"
-            android:contentDescription="@string/Preview"
-            android:layout_margin="5dp"
-            android:backgroundTint="@color/white"/>
+            <EditText
+                android:id="@+id/ingredientsInput"
+                android:hint="@string/Bahan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="4"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:background="@drawable/edittext_border"
+                android:padding="8dp"
+                android:layout_margin="5dp"
+                android:autofillHints=""
+                android:textColorHint="@color/black"
+                android:backgroundTint="@color/white"/>
 
-        <Button
-            android:id="@+id/selectImageButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/AmbilGambar"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/Pastel"/>
+            <EditText
+                android:id="@+id/stepsInput"
+                android:hint="@string/Langkah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="4"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:background="@drawable/edittext_border"
+                android:padding="8dp"
+                android:layout_margin="5dp"
+                android:autofillHints=""
+                android:textColorHint="@color/black"
+                android:backgroundTint="@color/white"/>
 
-        <Button
-            android:id="@+id/saveRecipeBtn"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/SaveRecipe"
-            android:padding="8dp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/Pastel"/>
-    </LinearLayout>
-</ScrollView>
+            <ImageView
+                android:id="@+id/recipeImagePreview"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/edittext_border"
+                android:contentDescription="@string/Preview"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/selectImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/AmbilGambar"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/Pastel"/>
+
+            <Button
+                android:id="@+id/saveRecipeBtn"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/SaveRecipe"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/Pastel"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation View -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/bottom_nav_menu" />
+</RelativeLayout>
