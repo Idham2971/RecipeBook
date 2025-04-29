@@ -4,10 +4,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#6F826A</color>
     <color name="lavaGrey">#393E46</color>
-    <color name="BrokenWhite">#CCCCCC</color>
+    <color name="BrokenWhite">#F3EEEA</color>
     <color name="DarkBlue">#0F4C75</color>
     <color name="Pastel">#FFDDAB</color>
-
+    <color name="Cream">#ffecbf</color>
+    <color name="Brown">#512d1b</color>
+    <color name="Krem">#E4C59E</color>
 
 
 </resources>
