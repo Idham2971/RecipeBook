@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green">
+    android:background="@color/Krem">
 
     <!-- Konten Scroll -->
     <ScrollView
@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_navigation"
-        android:background="@color/green">
+        android:background="@color/Krem">
 
         <LinearLayout
             android:orientation="vertical"
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/green">
+            android:background="@color/Krem">
 
             <EditText
                 android:id="@+id/recipeNameInput"
@@ -27,13 +27,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:autofillHints="name"
-                android:textColor="@color/white"
+                android:textColor="@color/BrokenWhite"
                 android:background="@drawable/edittext_border"
                 android:padding="8dp"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/Brown"
                 android:layout_margin="5dp"
                 android:inputType="text"
-                android:backgroundTint="@color/white"/>
+                android:backgroundTint="@color/BrokenWhite"/>
 
             <EditText
                 android:id="@+id/ingredientsInput"
@@ -47,8 +47,8 @@
                 android:padding="8dp"
                 android:layout_margin="5dp"
                 android:autofillHints=""
-                android:textColorHint="@color/black"
-                android:backgroundTint="@color/white"/>
+                android:textColorHint="@color/Brown"
+                android:backgroundTint="@color/BrokenWhite"/>
 
             <EditText
                 android:id="@+id/stepsInput"
@@ -62,8 +62,8 @@
                 android:padding="8dp"
                 android:layout_margin="5dp"
                 android:autofillHints=""
-                android:textColorHint="@color/black"
-                android:backgroundTint="@color/white"/>
+                android:textColorHint="@color/Brown"
+                android:backgroundTint="@color/BrokenWhite"/>
 
             <ImageView
                 android:id="@+id/recipeImagePreview"
@@ -74,7 +74,7 @@
                 android:background="@drawable/edittext_border"
                 android:contentDescription="@string/Preview"
                 android:layout_margin="5dp"
-                android:backgroundTint="@color/white"/>
+                android:backgroundTint="@color/BrokenWhite"/>
 
             <Button
                 android:id="@+id/selectImageButton"
@@ -82,8 +82,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/AmbilGambar"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/Pastel"/>
+                android:textColor="@color/BrokenWhite"
+                android:backgroundTint="@color/Brown"/>
 
             <Button
                 android:id="@+id/saveRecipeBtn"
@@ -92,8 +92,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/SaveRecipe"
                 android:padding="8dp"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/Pastel"/>
+                android:textColor="@color/white"
+                android:backgroundTint="@color/Brown"/>
         </LinearLayout>
     </ScrollView>
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tvRecipeCategory" type="id" />
+    <item name="tvRecipeName" type="id" />
+    <item name="ivRecipe" type="id" />
+    <item name="tvCategory" type="id" />
+    <item name="tvImageText" type="id" />
+    <item name="tvTitle" type="id" />
+    <item name="tvPrepTime" type="id" />
+</resources>

@@ -7,13 +7,13 @@
     <string name="CreateAccount">Create Account?</string>
     <string name="Add">Add Recipe</string>
     <string name="RBL">Recipe Book Logo</string>
-    <string name="RecipeName">Nama Resep?</string>
-    <string name="Bahan">Bahan-Bahan?</string>
-    <string name="Langkah">Langkah-Langkah?</string>
+    <string name="RecipeName">Nama Resep</string>
+    <string name="Bahan">Bahan-Bahan</string>
+    <string name="Langkah">Langkah-Langkah</string>
     <string name="Preview">Preview Gambar</string>
     <string name="AmbilGambar">Pilih Gambar dari Galeri</string>
     <string name="SaveRecipe">Simpan Resep</string>
-    <string name="Koleksi">Koleksi Resep</string>
+    <string name="Koleksi">Favorite</string>
     <string name="Search">Cari Resep</string>
     <string name="Mic">Mic</string>
     <string name="Popular">Resep Populer</string>
