@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/Krem"
+    android:backgroundTint="@color/green"
     android:background="@drawable/edittext_border">
 
     <!-- Konten yang bisa di-scroll -->
@@ -19,7 +19,7 @@
             android:padding="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/Brown"
+            android:backgroundTint="@color/green"
             android:background="@drawable/edittext_border">
 
             <ImageView
@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sample_recipe"
+                android:src="@drawable/mic"
                 android:backgroundTint="@color/white"
                 android:background="@drawable/edittext_border"
                 android:contentDescription="@string/GambarMakanan"/>
@@ -40,7 +40,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
             <TextView
                 android:text="@string/BahanBahan"
@@ -48,14 +48,14 @@
                 android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/ingredientsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="..."
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:backgroundTint="@color/white"
                 android:background="@drawable/edittext_border"/>
 
@@ -65,7 +65,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/stepsText"
@@ -82,10 +82,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="24dp"
-                android:src="@drawable/ic_save"
+                android:src="@android:drawable/ic_menu_save"
                 android:tint="@android:color/white"
                 android:backgroundTint="@color/red"
                 android:contentDescription="@string/Save"/>
+
         </LinearLayout>
     </ScrollView>
 

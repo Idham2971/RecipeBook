@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="example_image" />
+    <drawable name="ic_time" />
+    <drawable name="category_bg" />
+</resources>

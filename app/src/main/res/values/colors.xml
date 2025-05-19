@@ -4,12 +4,16 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#6F826A</color>
     <color name="lavaGrey">#393E46</color>
-    <color name="BrokenWhite">#F3EEEA</color>
+    <color name="BrokenWhite">#CCCCCC</color>
     <color name="DarkBlue">#0F4C75</color>
     <color name="Pastel">#FFDDAB</color>
-    <color name="Cream">#ffecbf</color>
-    <color name="Brown">#512d1b</color>
-    <color name="Krem">#E4C59E</color>
-
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="red">#F44336</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="blue_500">#2196F3</color>
+    <color name="red_500">#F44336</color>
+    <color name="gray_200">#EEEEEE</color>
 
 </resources>

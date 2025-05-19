@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.recepibook"
+    namespace = "com.example.recipebook" // ✅ diperbaiki dari recepibook
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.recepibook"
+        applicationId = "com.example.recipebook" // ✅ diperbaiki dari recepibook
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -25,6 +25,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -38,7 +39,6 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
 
-    // Glide untuk gambar
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
