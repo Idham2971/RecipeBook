@@ -15,5 +15,6 @@
     <color name="blue_500">#2196F3</color>
     <color name="red_500">#F44336</color>
     <color name="gray_200">#EEEEEE</color>
-
+    <color name="Krem">#EAE2C6</color>
+    <color name="Brown">#A76545</color>
 </resources>
