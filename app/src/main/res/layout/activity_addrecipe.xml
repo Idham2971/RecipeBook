@@ -33,7 +33,7 @@
                 android:textColorHint="@color/Brown"
                 android:layout_margin="5dp"
                 android:inputType="text"
-                android:backgroundTint="@color/BrokenWhite"/>
+                android:backgroundTint="@color/white"/>
 
             <EditText
                 android:id="@+id/ingredientsInput"
@@ -48,7 +48,7 @@
                 android:layout_margin="5dp"
                 android:autofillHints=""
                 android:textColorHint="@color/Brown"
-                android:backgroundTint="@color/BrokenWhite"/>
+                android:backgroundTint="@color/white"/>
 
             <EditText
                 android:id="@+id/stepsInput"
@@ -63,7 +63,7 @@
                 android:layout_margin="5dp"
                 android:autofillHints=""
                 android:textColorHint="@color/Brown"
-                android:backgroundTint="@color/BrokenWhite"/>
+                android:backgroundTint="@color/white"/>
 
             <ImageView
                 android:id="@+id/recipeImagePreview"
@@ -74,7 +74,7 @@
                 android:background="@drawable/edittext_border"
                 android:contentDescription="@string/Preview"
                 android:layout_margin="5dp"
-                android:backgroundTint="@color/BrokenWhite"/>
+                android:backgroundTint="@color/white"/>
 
             <Button
                 android:id="@+id/selectImageButton"
