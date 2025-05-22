@@ -1,108 +1,82 @@
-package com.example.recipebook;
+package com.example.recepibook;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.recipebook.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView popularRecipeList;
-    private RecipeAdapter recipeAdapter;
-    private List<Recipe> recipeList;
-    private RecipeDBHelper dbHelper;
+
     private EditText searchEditText;
-    private ImageButton micButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.example.recipebook.R.layout.activity_main);
 
-        // Initialize database helper
-        dbHelper = new RecipeDBHelper(this);
-
-        // Initialize views
-        popularRecipeList = findViewById(R.id.popularRecipeList);
-        searchEditText = findViewById(R.id.searchEditText);
-        micButton = findViewById(R.id.micButton);
-
-        // Setup RecyclerView
-        popularRecipeList.setLayoutManager(new LinearLayoutManager(this));
-        recipeList = new ArrayList<>();
-        recipeAdapter = new RecipeAdapter(this, recipeList);
-        popularRecipeList.setAdapter(recipeAdapter);
-
-        // Load popular recipes
-        loadPopularRecipes();
-
-        // Setup search functionality
-        searchEditText.setOnEditorActionListener((v, actionId, event) -> {
-            performSearch();
-            return true;
-        });
-
-        micButton.setOnClickListener(v -> {
-            // TODO: Implement voice search
-        });
-
-        // Setup bottom navigation
+        // Initialize UI components
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
-        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                int itemId = item.getItemId();
+        ImageButton searchButton = findViewById(R.id.search_button);
+        searchEditText = findViewById(R.id.search_edittext);
 
-                if (itemId == R.id.nav_home) {
-                    // Already in home
-                    return true;
-                } else if (itemId == R.id.nav_search) {
-                    performSearch();
-                } else if (itemId == R.id.nav_add) {
-                    startActivity(new Intent(MainActivity.this, AddRecipeActivity.class));
-                } else if (itemId == R.id.nav_saved) {
-                    startActivity(new Intent(MainActivity.this, SavedRecipesActivity.class));
-                } else if (itemId == R.id.nav_profile) {
-                    // TODO: Implement profile
-                }
-                return true;
+        // Set up bottom navigation
+        bottomNavigation.setOnNavigationItemSelectedListener(navListener);
+
+        // Set up search functionality
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                performSearch();
             }
         });
-    }
 
-    private void loadPopularRecipes() {
-        // Get all recipes from database (for demo, in real app you might want to implement popularity)
-        recipeList.clear();
-        recipeList.addAll(dbHelper.getAllRecipes());
-        recipeAdapter.notifyDataSetChanged();
+        // Set border for EditText (using the edittext_border.xml)
+        searchEditText.setBackgroundResource(R.drawable.edittext_border);
     }
 
     private void performSearch() {
-        String query = searchEditText.getText().toString().trim();
-        if (!query.isEmpty()) {
-            Intent intent = new Intent(this, SearchResultActivity.class);
-            intent.putExtra("query", query);
-            startActivity(intent);
+        String searchQuery = searchEditText.getText().toString().trim();
+        if (!searchQuery.isEmpty()) {
+            // Perform search operation
+            Toast.makeText(this, "Searching for: " + searchQuery, Toast.LENGTH_SHORT).show();
+            // You can add your actual search logic here
+        } else {
+            Toast.makeText(this, "Please enter a search term", Toast.LENGTH_SHORT).show();
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        loadPopularRecipes();
-    }
+    private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    int itemId = item.getItemId();
+
+                    if (itemId == R.id.nav_home) {
+                        // Already in MainActivity, just refresh if needed
+                        recreate();
+                        return true;
+                    } else if (itemId == R.id.nav_add) {
+                        startActivity(new Intent(MainActivity.this, AddRecipeActivity.class));
+                        return true;
+                    } else if (itemId == R.id.nav_saved) {
+                        startActivity(new Intent(MainActivity.this, SavedRecipesActivity.class));
+                        return true;
+                    } else if (itemId == R.id.nav_search) {
+                        // Focus on search field when search icon is clicked
+                        searchEditText.requestFocus();
+                        return true;
+                    }
+                    // Profile item has been removed
+                    return false;
+                }
+            };
 }

@@ -1,59 +1,71 @@
-package com.example.recipebook;
+package com.example.recepibook;
 
+import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import com.example.recipebook.DBHelper;
+import com.example.recipebook.R;
+
+import java.util.ArrayList;
 
 public class SavedRecipesActivity extends AppCompatActivity {
-    private RecyclerView recipeCollectionList;
-    private RecipeAdapter recipeAdapter;
-    private List<Recipe> recipeList;
-    private RecipeDBHelper dbHelper;
-    private TextView collectionTitle;
+
+    private RecyclerView recyclerView;
+    private RecipeAdapter adapter;
+    private DBHelper dbHelper;
+    private ArrayList<RecipeModel> recepibook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_recipes);
 
-        dbHelper = new RecipeDBHelper(this);
+        initializeViews();
+        setupRecyclerView();
+        loadRecipesFromDatabase();
+    }
 
-        // Initialize views
-        collectionTitle = findViewById(R.id.collectionTitle);
-        recipeCollectionList = findViewById(R.id.recipeCollectionList);
+    private void initializeViews() {
+        recyclerView = findViewById(R.id.recipeCollectionList);
+        dbHelper = new DBHelper(this);
+        recepibook = new ArrayList<>();
+    }
 
-        // Setup RecyclerView
-        recipeCollectionList.setLayoutManager(new LinearLayoutManager(this));
-        recipeList = dbHelper.getSavedRecipes();
-        recipeAdapter = new RecipeAdapter(this, recipeList);
-        recipeCollectionList.setAdapter(recipeAdapter);
+    private void setupRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new RecipeAdapter(this, recepibook);
+        recyclerView.setAdapter(adapter);
+    }
 
-        if (recipeList.isEmpty()) {
-            collectionTitle.setText("No saved recipes yet");
+    private void loadRecipesFromDatabase() {
+        try (Cursor cursor = dbHelper.getAllRecipes()) {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    RecipeModel recipe = new RecipeModel(
+                            cursor.getInt(0),     // id
+                            cursor.getString(1),  // title
+                            cursor.getString(2),  // category
+                            cursor.getString(3),  // time
+                            cursor.getBlob(4)     // image
+                    );
+                    recepibook.add(recipe);
+                } while (cursor.moveToNext());
+
+                adapter.updateData(recepibook);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle error (show Toast, etc.)
         }
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        refreshSavedRecipes();
-    }
-
-    private void refreshSavedRecipes() {
-        recipeList.clear();
-        recipeList.addAll(dbHelper.getSavedRecipes());
-        recipeAdapter.notifyDataSetChanged();
-
-        if (recipeList.isEmpty()) {
-            collectionTitle.setText("No saved recipes yet");
-        } else {
-            collectionTitle.setText("Your Collection");
-        }
+    protected void onDestroy() {
+        dbHelper.close();
+        super.onDestroy();
     }
 }

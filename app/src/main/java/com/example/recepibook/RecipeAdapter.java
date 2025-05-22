@@ -1,8 +1,9 @@
-package com.example.recipebook;
+package com.example.recepibook;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,78 +13,80 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
+import com.example.recepibook.R;
+import com.example.recepibook.RecipeModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
-    private Context context;
-    private List<Recipe> recipeList;
 
-    public RecipeAdapter(Context context, List<Recipe> recipeList) {
+    private final Context context;
+    private List<RecipeModel> recepibook;
+
+    public RecipeAdapter(Context context, List<RecipeModel> recipeList) {
         this.context = context;
-        this.recipeList = recipeList;
+        this.recepibook = recipeList != null ? recipeList : new ArrayList<>();
+    }
+
+    public void updateData(List<RecipeModel> newRecipes) {
+        this.recepibook.clear();
+        if (newRecipes != null) {
+            this.recepibook.addAll(newRecipes);
+        }
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_recipe, parent, false);
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.item_recipe, parent, false);
         return new RecipeViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
-        Recipe recipe = recipeList.get(position);
+        RecipeModel recipe = recepibook.get(position);
+        holder.bind(recipe);
 
-        holder.tvRecipeTitle.setText(recipe.getTitle());
-        holder.tvRecipeCategory.setText(recipe.getCategory());
-        holder.tvRecipeTime.setText(recipe.getTime());
-
-        if (recipe.getImage() != null) {
-            holder.ivRecipeImage.setImageBitmap(recipe.getImage());
-        }
-
-        holder.btnView.setOnClickListener(v -> {
+        holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, RecipeDetailActivity.class);
             intent.putExtra("recipe_id", recipe.getId());
             context.startActivity(intent);
-        });
-
-        holder.btnEdit.setOnClickListener(v -> {
-            Intent intent = new Intent(context, AddRecipeActivity.class);
-            intent.putExtra("recipe_id", recipe.getId());
-            context.startActivity(intent);
-        });
-
-        holder.btnDelete.setOnClickListener(v -> {
-            RecipeDBHelper dbHelper = new RecipeDBHelper(context);
-            dbHelper.deleteRecipe(recipe.getId());
-            recipeList.remove(position);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, recipeList.size());
         });
     }
 
     @Override
     public int getItemCount() {
-        return recipeList.size();
+        return recepibook.size();
     }
 
-    public static class RecipeViewHolder extends RecyclerView.ViewHolder {
-        TextView tvRecipeTitle, tvRecipeCategory, tvRecipeTime;
-        ImageView ivRecipeImage;
-        MaterialButton btnView, btnEdit, btnDelete;
+    static class RecipeViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView ivImage;
+        private final TextView tvTitle, tvCategory, tvTime;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvRecipeTitle = itemView.findViewById(R.id.tvRecipeTitle);
-            tvRecipeCategory = itemView.findViewById(R.id.tvRecipeCategory);
-            tvRecipeTime = itemView.findViewById(R.id.tvRecipeTime);
-            ivRecipeImage = itemView.findViewById(R.id.ivRecipeImage);
-            btnView = itemView.findViewById(R.id.btnView);
-            btnEdit = itemView.findViewById(R.id.btnEdit);
-            btnDelete = itemView.findViewById(R.id.btnDelete);
+            ivImage = itemView.findViewById(R.id.ivRecipeImage);
+            tvTitle = itemView.findViewById(R.id.tvRecipeTitle);
+            tvCategory = itemView.findViewById(R.id.tvRecipeCategory);
+            tvTime = itemView.findViewById(R.id.tvRecipeTime);
+        }
+
+        public void bind(RecipeModel recipe) {
+            tvTitle.setText(recipe.getTitle());
+            tvCategory.setText(recipe.getCategory());
+            tvTime.setText(recipe.getTime());
+
+            if (recipe.getImage() != null && recipe.getImage().length > 0) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(
+                        recipe.getImage(), 0, recipe.getImage().length);
+                ivImage.setImageBitmap(bitmap);
+                ivImage.setVisibility(View.VISIBLE);
+            } else {
+                ivImage.setVisibility(View.GONE);
+            }
         }
     }
 }

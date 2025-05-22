@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                     authHelper.setLogin(username);
 
                     // Pindah ke WelcomeActivity
-                    Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 }

@@ -23,5 +23,9 @@
     <string name="GambarMakanan">Gambar Makanan</string>
     <string name="HasilPencarian">Hasil Pencarian</string>
     <string name="Save">Simpan</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="my_recipes">My Recipes</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
 
 </resources>

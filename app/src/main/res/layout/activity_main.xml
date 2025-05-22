@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/Krem"
-    android:background="@drawable/edittext_border">
+    android:background="@color/krem">
 
     <!-- Konten Utama -->
     <LinearLayout
@@ -19,10 +18,11 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
 
             <EditText
-                android:id="@+id/searchEditText"
+                android:id="@+id/search_edittext"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
@@ -31,7 +31,6 @@
                 android:padding="8dp"
                 android:textColorHint="@color/Brown"
                 android:backgroundTint="@color/BrokenWhite"
-                android:autofillHints=""
                 android:inputType="text"/>
 
             <ImageButton
@@ -42,7 +41,18 @@
                 android:background="@drawable/border_bulat"
                 android:scaleType="centerCrop"
                 android:contentDescription="@string/Mic"
-                android:backgroundTint="@color/BrokenWhite"/>
+                android:backgroundTint="@color/BrokenWhite"
+                android:layout_marginStart="8dp"/>
+
+            <ImageButton
+                android:id="@+id/search_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_search"
+                android:background="@drawable/border_bulat"
+                android:contentDescription="@string/Search"
+                android:backgroundTint="@color/BrokenWhite"
+                android:layout_marginStart="8dp"/>
         </LinearLayout>
 
         <TextView
@@ -60,7 +70,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/edittext_border"
-            android:backgroundTint="@color/BrokenWhite" />
+            android:backgroundTint="@color/BrokenWhite"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
 
     <!-- Bottom Navigation -->
